@@ -1,0 +1,50 @@
+.month-box {
+  flex: 1;
+}
+
+.month-name {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.table {
+  display: flex;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  padding: 1px 0;
+}
+
+.cell {
+  flex: 1;
+  height: 15px;
+  width: 15px;
+}
+
+.today-cell {
+  background-color: #ea4335;
+  border-radius: 8px;
+}
+
+.cell-text {
+  text-align: center;
+  font-size: 9px;
+  font-weight: 500;
+  line-height: 14px;
+}
+
+.today-cell-text {
+  color: #fff;
+}
+
+.day-of-current-month {
+  color: #000;
+}
+
+.day-of-other-month {
+  color: #f1f3f4;
+}

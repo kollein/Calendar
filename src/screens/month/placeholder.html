@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      margin: 0;
+      padding: 40px 16px;
+      height: 100%;
+      background-color: #fff;
+    }
+
+    .placeholdershimmer {
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+      animation-iteration-count: infinite;
+      animation-name: placeHolderShimmer;
+      animation-timing-function: linear;
+      background: #f6f7f8;
+      background-image: -webkit-gradient(linear, left center, right center, from(#f6f7f8), color-stop(.2, #edeef1), color-stop(.4, #f6f7f8), to(#f6f7f8));
+      background-image: -webkit-linear-gradient(left, #f6f7f8 0, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
+      background-repeat: no-repeat;
+      background-size: 800px 104px;
+      height: 104px;
+      position: relative
+    }
+
+    @keyframes placeHolderShimmer {
+      0% {
+        background-position: -468px 0
+      }
+
+      100% {
+        background-position: 468px 0
+      }
+    }
+
+    .profile-shimmer>div {
+      background: #fff;
+      height: 6px;
+      left: 0;
+      position: absolute;
+      right: 0
+    }
+
+    .profile-shimmer .a {
+      height: 40px;
+      left: 40px;
+      right: auto;
+      top: 0;
+      width: 8px
+    }
+
+    .profile-shimmer .b {
+      height: 8px;
+      left: 48px;
+      top: 0
+    }
+
+    .profile-shimmer .c {
+      left: 136px;
+      top: 8px
+    }
+
+    .profile-shimmer .d {
+      height: 12px;
+      left: 48px;
+      top: 14px
+    }
+
+    .profile-shimmer .e {
+      left: 100px;
+      top: 26px
+    }
+
+    .profile-shimmer .f {
+      height: 10px;
+      left: 48px;
+      top: 32px
+    }
+
+    .profile-shimmer .g {
+      height: 20px;
+      top: 40px
+    }
+
+    .profile-shimmer .h {
+      left: 468px;
+      top: 60px
+    }
+
+    .profile-shimmer .i {
+      height: 13px;
+      top: 66px
+    }
+
+    .profile-shimmer .j {
+      left: 468px;
+      top: 79px
+    }
+
+    .profile-shimmer .k {
+      height: 13px;
+      top: 85px
+    }
+
+    .profile-shimmer .l {
+      left: 234px;
+      top: 98px
+    }
+  </style>
+</head>
+
+<body>
+  <div class="placeholdershimmer profile-shimmer">
+    <div class="a"></div>
+    <div class="b"></div>
+    <div class="c"></div>
+    <div class="d"></div>
+    <div class="e"></div>
+    <div class="f"></div>
+    <div class="g"></div>
+    <div class="h"></div>
+    <div class="i"></div>
+    <div class="j"></div>
+    <div class="k"></div>
+    <div class="l"></div>
+  </div>
+</body>
+
+</html>

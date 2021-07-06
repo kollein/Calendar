@@ -1,0 +1,30 @@
+.container {
+  flex: 1;
+  padding: 0 8px 0;
+  background-color: #fff;
+}
+
+.current-year {
+  color: #ea4335;
+}
+
+.sheet-container {
+  display: flex;
+}
+
+.header-title-ord {
+  flex: 1;
+  text-align: center;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.sasu-day {
+  color: #999;
+}
+
+.loader {
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}

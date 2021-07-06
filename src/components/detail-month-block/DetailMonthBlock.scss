@@ -1,0 +1,77 @@
+.month-box {
+  margin-top: 30px;
+}
+
+.month-box-0 {
+  margin-top: 60px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.cell {
+  flex: 1;
+  height: 64px;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.today-cell {
+  background-color: #006eed;
+  border-top-width: 3px;
+  border-top-color: #54a3ff;
+  box-sizing: border-box;
+}
+
+.cell-text {
+  text-align: center;
+  font-size: 18px;
+  line-height: 18px;
+  margin-top: 12px;
+}
+
+.cell-lunar-text {
+  font-size: 12px;
+  line-height: 12px;
+  margin-top: 10px;
+  color: #555;
+}
+
+.first-lunar-day {
+  color: #ea4335;
+}
+
+.today-cell-text {
+  color: #fff;
+}
+
+.sasu-day {
+  color: #999;
+}
+
+.title-month {
+  position: absolute;
+  top: -26px;
+  margin-top: 0;
+  width: 100%;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.today-month {
+  color: #ea4335;
+}
+
+.day-of-current-month {
+  color: #000;
+  border-top-width: 0.2px;
+  border-top-color: #d9d9d9;
+}
+
+.day-of-other-month {
+  color: transparent;
+  height: 0;
+}
