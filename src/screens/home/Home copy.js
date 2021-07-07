@@ -79,8 +79,7 @@ export default class HomeScreen extends React.PureComponent {
 
     this.state = {
       year,
-      message: 'Init2',
-      search: '',
+      message: 'Init',
     };
   }
 
@@ -103,11 +102,6 @@ export default class HomeScreen extends React.PureComponent {
       console.log('updateSearch', event);
       this.setState({ search: '2131' });
     }, 1000);
-  }
-
-  save() {
-    console.log('saved!');
-    // this.showYear(1993);
   }
 
   showYear = (yy) => {

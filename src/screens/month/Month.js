@@ -15,8 +15,8 @@ export default class MonthScreen extends React.PureComponent {
 
     this.layoutSheetList = [];
     const { year, month } = this.props.route.params;
-    this.year = year;
-    this.month = month;
+    this.year = parseInt(year);
+    this.month = parseInt(month);
     this.state = {
       ready: false,
     };

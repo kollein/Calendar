@@ -12,7 +12,7 @@ export default class MonthBlock extends React.PureComponent {
     // In JavaScript, the first month (January) is month number 0, so December returns month number 11.
     // let naturalMonth = this.props.month;
     let month = this.props.month - 1;
-    let year = this.props.year;
+    let year = parseInt(this.props.year);
     // Get first dat of month: 3 numbers specify year, month, and day
     let firstdayofmonth = new Date(year, month, 1);
     // In JavaScript, the first day of the week (0) means "Sunday"

@@ -7,7 +7,6 @@ import {
   TouchableOpacity,
   Keyboard,
 } from 'react-native';
-import { SearchBar } from 'react-native-elements';
 import styles from './Home.scss';
 import MonthBlock from '@components/month-block/MonthBlock';
 import IconSearch from '@/assets/images/icon-search.svg';
@@ -25,7 +24,7 @@ export default class HomeScreen extends React.PureComponent {
     super(props);
 
     const d = new Date();
-    const year = d.getFullYear();
+    const year = d.getFullYear().toString();
     this.currentYear = year;
 
     this.state = {
@@ -35,6 +34,10 @@ export default class HomeScreen extends React.PureComponent {
   }
 
   componentDidMount() {
+    this.updateHeader();
+  }
+
+  updateHeader() {
     this.props.navigation.setOptions({
       header: ({ scene, insets }) => {
         const { options } = scene.descriptor;
@@ -42,14 +45,26 @@ export default class HomeScreen extends React.PureComponent {
         options.headerStyle = {
           marginTop: top, // safe area
         };
+        const { search } = this.state;
         return (
-          <View style={options.headerStyle}>
-            <TextInput
-              style={styles['search-input']}
-              // keyboardType="number-pad"
-              placeholder="Year"
-              onChangeText={(val) => (this.inputYear = val)}
-            />
+          <View style={[options.headerStyle, styles['header-wrapper']]}>
+            <View style={styles['input-wrapper']}>
+              <TextInput
+                style={styles['search-input']}
+                keyboardType="number-pad"
+                textContentType="none"
+                maxLength={4}
+                placeholder="Year"
+                defaultValue={this.state.year}
+                onChangeText={(val) => (this.inputYear = val)}
+              />
+              <IconSearch style={styles['icon-search']} />
+              <TouchableOpacity
+                style={styles['btn-search']}
+                onPress={() => this.showYear(this.inputYear)}>
+                <Text style={styles['btn-search-text']}>Show</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         );
       },
@@ -58,12 +73,12 @@ export default class HomeScreen extends React.PureComponent {
 
   showYear = (yy) => {
     Keyboard.dismiss();
-    const year = parseInt(yy);
-    if (!year || year < 1000) return;
+    console.log('showYear', yy);
+    if (!yy || parseInt(yy) < 1000) return;
 
     const prevYear = this.state.year;
-    this.setState({ year });
-    this.setState({ message: `Changed from ${prevYear} to ${year}` });
+    this.setState({ year: yy });
+    this.setState({ message: `Changed from ${prevYear} to ${yy}` });
   };
 
   onScroll(event) {
@@ -74,12 +89,14 @@ export default class HomeScreen extends React.PureComponent {
       if (trackScrollTop > validDistance && this.validScroll) {
         this.validScroll = false;
         const year = this.state.year + 1;
+        this.inputYear = year;
         this.setState({ year });
       }
     } else {
       if (trackScrollTop < -validDistance && this.validScroll) {
         this.validScroll = false;
         const year = this.state.year - 1;
+        this.inputYear = year;
         this.setState({ year });
       }
     }
@@ -137,32 +154,12 @@ export default class HomeScreen extends React.PureComponent {
       </View>
     );
 
-    const actionBox = (
-      <View key="actionBox" style={styles['action-wrapper']}>
-        <TextInput
-          style={styles['search-input']}
-          keyboardType="number-pad"
-          maxLength={4}
-          placeholder="Year"
-          onChangeText={(val) => (this.inputYear = val)}
-        />
-        <IconSearch style={styles['icon-search']} />
-
-        <TouchableOpacity
-          style={styles['btn-search']}
-          onPress={() => this.showYear(this.inputYear)}>
-          <Text style={styles['btn-search-text']}>Show</Text>
-        </TouchableOpacity>
-      </View>
-    );
-
     return (
       <ScrollView
         contentContainerStyle={[styles.container]}
         onScroll={(event) => this.onScroll(event)}
         onMomentumScrollEnd={(event) => this.onMomentumScrollEnd(event)}
         scrollEventThrottle={16}>
-        {actionBox}
         <Text>{this.state.message}</Text>
         <Text>{this.state.year}</Text>
         {calendarBox}

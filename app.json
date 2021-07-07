@@ -1,4 +1,18 @@
 {
   "name": "AwesomeProject",
-  "displayName": "AwesomeProject"
+  "displayName": "AwesomeProject",
+  "expo": {
+   "name": "Calendar",
+   "icon": "./src/assets/images/favicon.png",
+   "version": "1.0.0",
+   "slug": "your-app-slug",
+   "ios": {
+     "bundleIdentifier": "com.yourcompany.yourappname",
+     "buildNumber": "1.0.0"
+   },
+   "android": {
+     "package": "com.yourcompany.yourappname",
+     "versionCode": 1
+   }
+  }
 }
