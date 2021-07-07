@@ -1,16 +1,26 @@
 import React from 'react';
-import { View, Text, Button } from 'react-native';
+import {
+  ScrollView,
+  View,
+  Text,
+  Button,
+  ActivityIndicator,
+} from 'react-native';
+import { Image } from 'react-native-elements';
 import { connect } from 'react-redux';
 import * as actions from '@/store/modules/app/actions';
+import styles from './Profile.scss';
 
 class ProfileScreen extends React.PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      counters: this.props.counters,
       message: 'Nothing',
     };
+    console.log('constructor called');
+    // init model list
+    this.getModelList();
   }
 
   componentDidUpdate(prevProps) {
@@ -25,8 +35,13 @@ class ProfileScreen extends React.PureComponent {
 
   showState() {
     setTimeout(() => {
-      console.log('this.props', this.props.counters);
+      console.log('showState', this.props.counters);
     }, 0);
+  }
+
+  async getModelList() {
+    await this.props.getModelList();
+    this.showState();
   }
 
   createCounter() {
@@ -49,9 +64,25 @@ class ProfileScreen extends React.PureComponent {
     this.showState();
   }
 
+  prepareModelList() {
+    return this.props.modelList.map((item, i) => {
+      return (
+        <Image
+          key={i}
+          source={{ uri: item.media.images[1] }}
+          style={styles['main-image']}
+          resizeMode="contain"
+          PlaceholderContent={<ActivityIndicator />}
+        />
+      );
+    });
+  }
+
   render() {
+    const modelListBox = this.prepareModelList();
     return (
-      <View>
+      <ScrollView>
+        <Button title="Get Vehicles" onPress={() => this.getModelList()} />
         <Button title="Create Counter" onPress={() => this.createCounter()} />
         <Button
           title="Increase Counter Value By Id"
@@ -65,18 +96,28 @@ class ProfileScreen extends React.PureComponent {
           title="Increase Counter Value By Id With Delay"
           onPress={() => this.increaseCounterByIdWithDelay(1)}
         />
-        <Text>{this.state.counters['1']}</Text>
-        <Text>{this.state.message}</Text>
-      </View>
+        <Text>
+          modelList: {this.props.modelList.length} -{' '}
+          {typeof this.props.modelList}
+        </Text>
+        <Text>counters['1'] value: {this.props.counters['1']}</Text>
+        <Text>message: {this.state.message}</Text>
+        {modelListBox}
+      </ScrollView>
     );
   }
 }
 
 export default connect(
-  (state) => ({
-    counters: state.app.counters,
-  }),
+  (state) => {
+    // console.log('state.app.modelList', state.app.modelList);
+    return {
+      counters: state.app.counters,
+      modelList: state.app.modelList,
+    };
+  },
   (dispatch) => ({
+    getModelList: async () => dispatch(actions.getModelList()),
     addNewCounter: () => dispatch(actions.newCounter()),
     increment: (id) => dispatch(actions.increment(id)),
     decrement: (id) => dispatch(actions.decrement(id)),

@@ -1,13 +1,14 @@
 @import '../../styles/variables.scss';
 
-
 .container {
   flex: 1;
   background-color: #fff;
 }
 
 .header-wrapper {
-  padding: 6px 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 6px;
   background-color: rgb(242,242,247);
 }
 

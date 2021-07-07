@@ -1,9 +1,15 @@
 import { handleActions } from 'redux-actions';
-import { INCREMENT, DECREMENT, ADD_NEW_COUNTER } from './constants';
+import {
+  INCREMENT,
+  DECREMENT,
+  ADD_NEW_COUNTER,
+  GET_MODEL_LIST,
+} from './constants';
 
 const initialState = {
   idGen: 0,
   counters: {},
+  modelList: [],
 };
 
 //you can do better here, I was just showing that you need to make a new copy
@@ -23,6 +29,7 @@ export default handleActions(
       //assign value 0 to that id.
 
       return {
+        ...state,
         idGen: newId,
         counters: {
           ...state.counters,
@@ -59,6 +66,15 @@ export default handleActions(
           ...state.counters,
           [id]: state.counters[id] - 1,
         },
+      };
+    },
+    [GET_MODEL_LIST]: (state, action) => {
+      const {
+        payload: { data },
+      } = action;
+      return {
+        ...state,
+        modelList: data,
       };
     },
   },

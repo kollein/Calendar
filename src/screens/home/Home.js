@@ -43,7 +43,7 @@ export default class HomeScreen extends React.PureComponent {
         const { options } = scene.descriptor;
         const { top } = insets;
         options.headerStyle = {
-          marginTop: top, // safe area
+          paddingTop: top + 6, // safe area
         };
         const { search } = this.state;
         return (

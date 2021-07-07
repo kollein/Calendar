@@ -1,4 +1,10 @@
-import { INCREMENT, DECREMENT, ADD_NEW_COUNTER } from './constants';
+import vehiclesService from '../../../api/vehiclesService';
+import {
+  INCREMENT,
+  DECREMENT,
+  ADD_NEW_COUNTER,
+  GET_MODEL_LIST,
+} from './constants';
 
 //each action should have the following signiture.
 //  {
@@ -47,12 +53,34 @@ const delay = (ms) => {
 };
 
 export const incrementWithDelay = (id) => {
+  // middleware
   return async (dispatch, getState) => {
     await delay(1000);
     dispatch({
       type: INCREMENT,
       payload: {
         id,
+      },
+    });
+  };
+};
+
+export const getModelList = () => {
+  // middleware
+  return async (dispatch) => {
+    let data = [];
+    try {
+      const res = await vehiclesService.get('api/vehicles/models');
+      console.log('res-------', Array.isArray(res.data));
+      data = !Array.isArray(res.data) ? [] : res.data;
+    } catch (e) {
+      console.log('error', e.message);
+      data = [];
+    }
+    dispatch({
+      type: GET_MODEL_LIST,
+      payload: {
+        data,
       },
     });
   };

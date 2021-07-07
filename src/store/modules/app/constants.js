@@ -9,5 +9,6 @@ export const NAME = 'app';
 export const INCREMENT = `${NAME}/INCREMENT`;
 export const DECREMENT = `${NAME}/DECREMENT`;
 export const ADD_NEW_COUNTER = `${NAME}/NEW`;
+export const GET_MODEL_LIST = `${NAME}/GET_MODEL_LIST`;
 
 //as you can see above, each action is namespaced with module's name.
