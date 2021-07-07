@@ -157,11 +157,12 @@ export default class HomeScreen extends React.PureComponent {
     return (
       <ScrollView
         contentContainerStyle={[styles.container]}
-        onScroll={(event) => this.onScroll(event)}
-        onMomentumScrollEnd={(event) => this.onMomentumScrollEnd(event)}
-        scrollEventThrottle={16}>
-        <Text>{this.state.message}</Text>
-        <Text>{this.state.year}</Text>
+        // onScroll={(event) => this.onScroll(event)}
+        // onMomentumScrollEnd={(event) => this.onMomentumScrollEnd(event)}
+        // scrollEventThrottle={16}
+      >
+        {/* <Text>{this.state.message}</Text>
+        <Text>{this.state.year}</Text> */}
         {calendarBox}
       </ScrollView>
     );

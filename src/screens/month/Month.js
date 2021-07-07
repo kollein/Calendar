@@ -37,7 +37,7 @@ export default class MonthScreen extends React.PureComponent {
       }, 0);
     this.scrollViewRef.scrollTo({
       x: 0,
-      y: offsetMonthHeight - 200,
+      y: offsetMonthHeight - 100,
       duration: 330,
     });
   }
